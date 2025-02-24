@@ -1,0 +1,3 @@
+base_images:
+  stable: "databricks-12.2lts-shared-v1.3.0"
+  latest: "databricks-12.2lts-shared-v2.1.0"
