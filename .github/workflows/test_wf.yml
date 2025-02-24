@@ -1,0 +1,30 @@
+name: Bump and Tag Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: "Specify version to bump: major, minor, or patch"
+        required: true
+        type: string
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install bump2version
+        run: pip install bump2version
+
+      - name: Bump Version
+        run: bump2version ${{ inputs.bump_type }}
+
+      - name: Print New Version
+        run: cat VERSION.txt
