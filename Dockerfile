@@ -1,0 +1,3 @@
+FROM python:3.10-slim
+ARG VERSION
+ENV VERSION=${VERSION}
