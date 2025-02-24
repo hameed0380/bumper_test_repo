@@ -24,7 +24,10 @@ jobs:
         run: pip install bump2version
 
       - name: Bump Version
-        run: bump2version ${{ inputs.bump_type }}
+        run: bump2version ${{ inputs.bump_type }} --no-commit --no-tag --verbose
 
       - name: Print New Version
         run: cat VERSION.txt
+
+      - name: Check for Changes
+        run: git diff
